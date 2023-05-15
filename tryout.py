@@ -63,7 +63,7 @@ async def buttRepHandler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     if query.data == '1':
         url = ar[-1]
-        base_url = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data='
+        base_url = 'https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl='
         shorten = base_url + url
         payload={}
         headers = {}
