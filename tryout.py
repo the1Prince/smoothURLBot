@@ -17,16 +17,17 @@ shortlink = 'Short Link'
 userlink = ''
 ar=[]
 
+#initialisethe telegram bot
 application = Application.builder().token(Token).build()
 
 
-
+#message when you first access th bot
 async def start(update: telegram.Update, context: ContextTypes.DEFAULT_TYPE):
     
     await context.bot.send_message(chat_id=update.effective_chat.id, text="Insert a link")
 
 
-
+#message when you enter the /help command
 async def help(update: telegram.Update, context: ContextTypes.DEFAULT_TYPE):
     await context.bot.send_message(chat_id=update.effective_chat.id, text='''
     /start -> Welcome to tryTalk url shortener
@@ -35,10 +36,9 @@ async def help(update: telegram.Update, context: ContextTypes.DEFAULT_TYPE):
     ''')
 
 
-#async def shorten(update: telegram.Update, context: ContextTypes.DEFAULT_TYPE):
-    #await context.bot.send_message(chat_id=update.effective_chat.id, text="Enter your URL")
 
 
+#message when you enter the /contact command
 async def contact(update: telegram.Update, context: ContextTypes.DEFAULT_TYPE):
     await context.bot.send_message(chat_id=update.effective_chat.id, text='''
     email: princeodoi39@gmail.com
@@ -62,6 +62,7 @@ async def buttRepHandler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await query.answer()
 
     if query.data == '1':
+        #qr code will be generated if the user selects the qr
         url = ar[-1]
         base_url = 'https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl='
         shorten = base_url + url
